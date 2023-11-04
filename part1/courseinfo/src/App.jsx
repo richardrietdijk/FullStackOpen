@@ -9,9 +9,9 @@ const Part = (props) => {
 const Content = (props) => {
   return (
     <div>
-      <Part part={props.part1} />
-      <Part part={props.part2} />
-      <Part part={props.part3} />
+      <Part part={props.parts[0].name} />
+      <Part part={props.parts[1].name} />
+      <Part part={props.parts[2].name} />
     </div>
   );
 };
@@ -20,7 +20,9 @@ const Total = (props) => {
   return (
     <p>
       Number of exercises{" "}
-      {props.exercises1 + props.exercises2 + props.exercises3}
+      {props.parts[0].exercises +
+        props.parts[1].exercises +
+        props.parts[2].exercises}
     </p>
   );
 };
@@ -44,16 +46,8 @@ const App = () => {
   return (
     <div>
       <Header course={course} />
-      <Content
-        part1={parts[0].name}
-        part2={parts[1].name}
-        part3={parts[2].name}
-      />
-      <Total
-        exercises1={parts[0].exercises}
-        exercises2={parts[1].exercises}
-        exercises3={parts[2].exercises}
-      />
+      <Content parts={parts} />
+      <Total parts={parts} />
     </div>
   );
 };
