@@ -17,6 +17,7 @@ const App = () => {
 
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       <p>{anecdotes[selected]}</p>
       <p>has {votes[selected]} votes</p>
       <button
@@ -24,7 +25,6 @@ const App = () => {
           const copy = [...votes];
           copy[selected] += 1;
           setVotes(copy);
-          console.log(votes);
         }}
       >
         vote
@@ -36,6 +36,14 @@ const App = () => {
       >
         next anecdote
       </button>
+      <h1>Anecdote with most votes</h1>
+      <p>
+        {
+          anecdotes[
+            votes.indexOf(votes.reduce((acc, curr) => Math.max(acc, curr)))
+          ]
+        }
+      </p>
     </div>
   );
 };
